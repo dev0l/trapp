@@ -5,9 +5,7 @@ import Foundation
 struct Transcript: Codable, Identifiable {
     let id: UUID
     let title: String
-    let course: String
-    let date: Date
-    let tags: [String]
+    var date: Date?
     let rawText: String
     let createdAt: Date
 }

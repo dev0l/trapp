@@ -4,9 +4,12 @@ import SwiftUI
 
 @main
 struct TrappApp: App {
+    @StateObject private var appState = AppState()
+
     var body: some Scene {
         WindowGroup {
-            // Root view
+            TranscriptListView()
+                .environmentObject(appState)
         }
     }
 }
