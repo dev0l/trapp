@@ -1,5 +1,6 @@
 // Root app state container
 
+import Combine
 import SwiftUI
 
 class AppState: ObservableObject {
