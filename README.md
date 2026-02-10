@@ -4,7 +4,8 @@ iOS application for transforming lecture transcripts into structured study progr
 
 ## Foundation Structure
 
-- **App/** — SwiftUI app entry point and root state management
+- **TrappApp.swift** — SwiftUI app entry point
+- **AppState.swift** — Root state management
 - **Models/** — Data models (Transcript, Summary)
 - **Views/** — SwiftUI views organized by user flow
 - **Services/** — Business logic (Authentication, Persistence, Program Generation)

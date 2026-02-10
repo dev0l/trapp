@@ -1,9 +1,9 @@
-// TraP iOS App entry point
+// Trapp iOS App entry point
 
 import SwiftUI
 
 @main
-struct TraPApp: App {
+struct TrappApp: App {
     var body: some Scene {
         WindowGroup {
             // Root view
