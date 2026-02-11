@@ -78,8 +78,9 @@ struct NLSummarizer {
 
         // Noise mitigation: remove filler tokens and trivially short words
         let filtered = frequency.filter { word, _ in
-            if fillerTokens.contains(word) { return false }
-            if word.count < 4 && !knownShortTerms.contains(word) { return false }
+            let normalized = word.lowercased()
+            if fillerTokens.contains(normalized) { return false }
+            if normalized.count < 4 && !knownShortTerms.contains(normalized) { return false }
             return true
         }
 
