@@ -4,8 +4,9 @@ import Foundation
 
 struct Transcript: Codable, Identifiable {
     let id: UUID
-    let title: String
+    var title: String
     var date: Date?
-    let rawText: String
+    var rawText: String
     let createdAt: Date
+    var program: StudyProgram?
 }
