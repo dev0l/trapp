@@ -7,4 +7,5 @@ struct StudyProgram: Codable {
     let studyTasks: [String]
     let quizQuestions: [String]
     let generatedAt: Date
+    var keywords: [String]? = []
 }

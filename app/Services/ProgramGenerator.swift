@@ -1,97 +1,117 @@
-// Rule-based summary and program step generation
+// Program generation using NaturalLanguage-based signal extraction
 
 import Foundation
+import NaturalLanguage
 
 struct ProgramGenerator {
 
-    /// Generate a study program from raw transcript text using deterministic heuristics.
+    /// Generate a study program from raw transcript text using NLP-based heuristics.
     static func generate(from text: String) -> StudyProgram {
-        let sentences = extractSentences(from: text)
-        let substantive = sentences.filter { wordCount($0) >= 5 }
+        let sentences = NLSummarizer.extractSentences(from: text)
+        let keywords = NLSummarizer.extractKeywords(from: text, limit: 5)
+        let language = NLSummarizer.detectLanguage(of: text)
 
-        let keyPoints = extractKeyPoints(from: substantive)
-        let studyTasks = generateStudyTasks(from: keyPoints)
-        let quizQuestions = generateQuizQuestions(from: substantive)
+        let keyPoints = extractKeyPoints(sentences: sentences, keywords: keywords, language: language)
+        let studyTasks = generateStudyTasks(from: keywords)
+        let quizQuestions = generateQuizQuestions(from: keywords, sentences: sentences, language: language)
 
         return StudyProgram(
             keyPoints: keyPoints,
             studyTasks: studyTasks,
             quizQuestions: quizQuestions,
-            generatedAt: Date()
+            generatedAt: Date(),
+            keywords: keywords
         )
     }
 
-    // MARK: - Sentence Extraction
+    // MARK: - Key Points (scored sentence selection)
 
-    private static func extractSentences(from text: String) -> [String] {
-        // Split on sentence-ending punctuation and newlines
-        let separators = CharacterSet(charactersIn: ".!?\n")
-        return text
-            .components(separatedBy: separators)
-            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-            .filter { !$0.isEmpty }
-    }
+    private static func extractKeyPoints(
+        sentences: [String],
+        keywords: [String],
+        language: NLLanguage?
+    ) -> [String] {
+        let scored = NLSummarizer.scoreSentences(sentences, keywords: keywords, language: language)
 
-    private static func wordCount(_ text: String) -> Int {
-        text.split(separator: " ").count
-    }
+        // Take top 5-7 highest-scored unique sentences
+        let topSentences = scored
+            .sorted { $0.score > $1.score }
+            .prefix(7)
+            .map { $0.sentence }
 
-    // MARK: - Key Points
-
-    private static func extractKeyPoints(from sentences: [String]) -> [String] {
-        // Take the longest / most substantive sentences, up to 10
-        let sorted = sentences.sorted { wordCount($0) > wordCount($1) }
-        let selected = Array(sorted.prefix(10))
         // Return in original order for readability
-        return sentences.filter { selected.contains($0) }
+        return sentences.filter { topSentences.contains($0) }
     }
 
-    // MARK: - Study Tasks
+    // MARK: - Study Tasks (keyword-template approach)
 
-    private static func generateStudyTasks(from keyPoints: [String]) -> [String] {
-        let prefixes = [
-            "Review and understand: ",
-            "Explain in your own words: ",
-            "Summarize the concept: ",
-            "Create an example for: ",
-            "Connect to prior knowledge: "
+    private static func generateStudyTasks(from keywords: [String]) -> [String] {
+        let templates = [
+            "Explain the concept of **%@** in your own words.",
+            "Connect **%@** to other concepts mentioned.",
+            "Summarize the importance of **%@**."
         ]
 
         var tasks: [String] = []
-        for (index, point) in keyPoints.enumerated() {
-            let prefix = prefixes[index % prefixes.count]
-            // Lowercase the first character of the point for natural reading
-            let lowerPoint = point.prefix(1).lowercased() + point.dropFirst()
-            tasks.append(prefix + lowerPoint)
-            if tasks.count >= 10 { break }
+        for (index, keyword) in keywords.enumerated() {
+            let template = templates[index % templates.count]
+            tasks.append(String(format: template, keyword))
         }
+
+        // If fewer than 3 keywords, pad with generic tasks from available keywords
+        if tasks.isEmpty {
+            tasks.append("Review the transcript and identify the main topic.")
+            tasks.append("Summarize the transcript in three sentences.")
+        }
+
         return tasks
     }
 
-    // MARK: - Quiz Questions
+    // MARK: - Quiz Questions (keyword-focused + fallback)
 
-    private static func generateQuizQuestions(from sentences: [String]) -> [String] {
-        let starters = [
-            "What is the significance of ",
-            "Why is it important that ",
-            "How does the concept of ",
-            "What would happen if ",
-            "Can you explain why "
-        ]
-
-        // Pick sentences spread across the text for variety
-        let step = max(1, sentences.count / 5)
+    private static func generateQuizQuestions(
+        from keywords: [String],
+        sentences: [String],
+        language: NLLanguage?
+    ) -> [String] {
         var questions: [String] = []
 
-        for i in stride(from: 0, to: sentences.count, by: step) {
-            if questions.count >= 5 { break }
-            let sentence = sentences[i]
-            let starter = starters[questions.count % starters.count]
-            // Extract the core topic (first ~8 words) for a concise question
-            let words = sentence.split(separator: " ")
-            let topic = words.prefix(8).joined(separator: " ").lowercased()
-            questions.append(starter + topic + "?")
+        if keywords.count >= 3 {
+            // Keyword-based focused questions
+            let templates = [
+                "What is the primary function of **%@**?",
+                "How does **%@** relate to the main topic?",
+                "Define **%@** and give an example."
+            ]
+            for (index, keyword) in keywords.enumerated() {
+                if questions.count >= 5 { break }
+                let template = templates[index % templates.count]
+                questions.append(String(format: template, keyword))
+            }
+        } else {
+            // Fallback: use top-scored sentences for fill-in-the-blank style
+            let scored = NLSummarizer.scoreSentences(sentences, keywords: keywords, language: language)
+            let topSentences = scored
+                .sorted { $0.score > $1.score }
+                .prefix(5)
+
+            for item in topSentences {
+                let words = item.sentence.split(separator: " ")
+                if words.count >= 6 {
+                    let halfPoint = words.count / 2
+                    let firstHalf = words.prefix(halfPoint).joined(separator: " ")
+                    questions.append("Complete this statement: \(firstHalf)...")
+                } else {
+                    questions.append("True or False: \(item.sentence)")
+                }
+            }
+
+            // Always ensure at least one question
+            if questions.isEmpty {
+                questions.append("What is the main idea of this transcript?")
+            }
         }
+
         return questions
     }
 }
