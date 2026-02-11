@@ -16,7 +16,7 @@ struct AddTranscriptView: View {
     @State private var includeDate = false
     @State private var showingFileImporter = false
 
-    private let titleLimit = 30
+    private let titleLimit = 50
 
     private var isEditing: Bool { existingTranscript != nil }
 
