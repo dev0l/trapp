@@ -149,7 +149,7 @@ struct NLSummarizer {
             "exam", "key", "critical", "essential"
         ]
         let swedish = [
-            "viktigt", "tenta", "sammanfattning", "definition",
+            "viktigt", "viktig", "tenta", "sammanfattning", "definition",
             "kom ihåg"
         ]
 
