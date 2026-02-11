@@ -7,6 +7,7 @@ struct TranscriptDetailView: View {
     let transcriptId: UUID
 
     @State private var showingEditSheet = false
+    @State private var showingRegenerateAlert = false
 
     /// Live lookup so edits propagate immediately.
     private var transcript: Transcript? {
@@ -26,12 +27,7 @@ struct TranscriptDetailView: View {
 
                         Divider()
 
-                        Text(transcript.rawText)
-                            .font(.body)
-
-                        Divider()
-
-                        // Program section
+                        // Program section — placed above transcript for quick access
                         if let program = transcript.program {
                             NavigationLink(destination: StudyProgramView(program: program, transcriptTitle: transcript.title)) {
                                 Label("View Study Program", systemImage: "list.clipboard.fill")
@@ -42,6 +38,17 @@ struct TranscriptDetailView: View {
                                     .foregroundStyle(.blue)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                             }
+
+                            Button {
+                                showingRegenerateAlert = true
+                            } label: {
+                                Label("Regenerate", systemImage: "arrow.trianglehead.2.counterclockwise")
+                                    .font(.subheadline)
+                                    .padding(.vertical, 8)
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .buttonStyle(.bordered)
+                            .tint(.orange)
                         } else {
                             Button {
                                 appState.generateProgram(for: transcriptId)
@@ -53,6 +60,11 @@ struct TranscriptDetailView: View {
                             }
                             .buttonStyle(.borderedProminent)
                         }
+
+                        Divider()
+
+                        Text(transcript.rawText)
+                            .font(.body)
 
                         Divider()
 
@@ -74,6 +86,14 @@ struct TranscriptDetailView: View {
                 .sheet(isPresented: $showingEditSheet) {
                     AddTranscriptView(existingTranscript: transcript)
                         .environmentObject(appState)
+                }
+                .alert("Regenerate Study Program?", isPresented: $showingRegenerateAlert) {
+                    Button("Cancel", role: .cancel) { }
+                    Button("Regenerate", role: .destructive) {
+                        appState.generateProgram(for: transcriptId)
+                    }
+                } message: {
+                    Text("This will replace the current study program with a freshly generated one.")
                 }
             } else {
                 Text("Transcript not found")
