@@ -1,28 +1,92 @@
-# Xcode / SwiftUI
-DerivedData/
-*.xcuserstate
-*.xcworkspace
-*.xcodeproj/project.xcworkspace/xcuserdata
-*.xcodeproj/xcuserdata
-*.xcuserdatad
-*.moved-aside
-*.pbxuser
-*.mode1v3
-*.mode2v3
-*.perspectivev3
-*.swp
-*.hmap
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
-# macOS
+## macOS
 .DS_Store
+.idea
 
-# Swift Package Manager
+## Swift Package Manager
 .build/
 Packages/
 Package.resolved
 
-# Orchestration (local-only for now)
+## Build generated
+build/
+DerivedData
+
+# ## Xcode / SwiftUI
+# DerivedData/
+# *.xcuserstate
+# *.xcworkspace
+# *.xcodeproj/project.xcworkspace/xcuserdata
+# *.xcodeproj/xcuserdata
+# *.xcuserdatad
+# *.moved-aside
+# *.pbxuser
+# *.mode1v3
+# *.mode2v3
+# *.perspectivev3
+# *.swp
+# *.hmap
+
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+
+## Other
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcarchive
+*.xcscmblueprint
+
+## Orchestration (local-only for now)
 orch/
 
-# Tooling / experiments
+## Tooling / experiments
 *.log
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+
+# CocoaPods
+#
+# We recommend against adding the Pods directory to your .gitignore. However
+# you should judge for yourself, the pros and cons are mentioned at:
+# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
+#
+# Pods/
+
+# Carthage
+#
+# Add this line if you want to avoid checking in source code from Carthage dependencies.
+# Carthage/Checkouts
+
+Carthage/Build
+
+# Fastlane
+*.app.dSYM.zip
+*.mobileprovision
+fastlane/report.xml
+fastlane/screenshots
+fastlane/test_output
+Preview.html
+output
+*.
+Developer.xcconfig
+config.json
+EduVPN/Resources/Assets.xcassets
+Developer-macOS.xcconfig
+EduVPN-macOS/Resources/Assets.xcassets
+
+vendor/bundle
+
