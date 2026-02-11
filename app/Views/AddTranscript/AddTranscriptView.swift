@@ -1,6 +1,7 @@
 // Add or edit transcript view
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct AddTranscriptView: View {
     @EnvironmentObject var appState: AppState
@@ -13,8 +14,9 @@ struct AddTranscriptView: View {
     @State private var rawText = ""
     @State private var date = Date()
     @State private var includeDate = false
+    @State private var showingFileImporter = false
 
-    private let titleLimit = 60
+    private let titleLimit = 30
 
     private var isEditing: Bool { existingTranscript != nil }
 
@@ -41,9 +43,17 @@ struct AddTranscriptView: View {
                     Text("Title")
                 }
 
-                Section("Transcript Body") {
+                Section {
+                    Button {
+                        showingFileImporter = true
+                    } label: {
+                        Label("Import from File", systemImage: "doc.badge.plus")
+                    }
+
                     TextEditor(text: $rawText)
                         .frame(minHeight: 150)
+                } header: {
+                    Text("Transcript Body")
                 }
 
                 Section {
@@ -78,6 +88,13 @@ struct AddTranscriptView: View {
                     }
                 }
             }
+            .fileImporter(
+                isPresented: $showingFileImporter,
+                allowedContentTypes: [.plainText, .rtf],
+                allowsMultipleSelection: false
+            ) { result in
+                handleImportedFile(result)
+            }
         }
     }
 
@@ -99,5 +116,29 @@ struct AddTranscriptView: View {
             )
         }
         dismiss()
+    }
+
+    private func handleImportedFile(_ result: Result<[URL], Error>) {
+        guard case .success(let urls) = result, let url = urls.first else { return }
+        guard url.startAccessingSecurityScopedResource() else { return }
+        defer { url.stopAccessingSecurityScopedResource() }
+
+        do {
+            if url.pathExtension.lowercased() == "rtf" {
+                let data = try Data(contentsOf: url)
+                let attributed = try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.rtf], documentAttributes: nil)
+                rawText = attributed.string
+            } else {
+                rawText = try String(contentsOf: url, encoding: .utf8)
+            }
+
+            // Auto-fill title from filename if title is empty
+            if title.isEmpty {
+                let filename = url.deletingPathExtension().lastPathComponent
+                title = String(filename.prefix(titleLimit))
+            }
+        } catch {
+            // Silently fail — user can still type manually
+        }
     }
 }
