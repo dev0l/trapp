@@ -47,9 +47,12 @@ struct ProgramGenerator {
 
     private static func generateStudyTasks(from keywords: [String]) -> [String] {
         let templates = [
-            "Explain the concept of **%@** in your own words.",
-            "Connect **%@** to other concepts mentioned.",
-            "Summarize the importance of **%@**."
+            "Implement a small example that demonstrates **%@**.",
+            "Build a test case that validates the behavior of **%@**.",
+            "Create a diagram or outline showing how **%@** connects to the main topic.",
+            "Write a code snippet or pseudocode using **%@**.",
+            "Compare **%@** with an alternative approach and note trade-offs.",
+            "Refactor an existing example to incorporate **%@**."
         ]
 
         var tasks: [String] = []
@@ -58,10 +61,10 @@ struct ProgramGenerator {
             tasks.append(String(format: template, keyword))
         }
 
-        // If fewer than 3 keywords, pad with generic tasks from available keywords
+        // If no keywords at all, provide generic actionable fallbacks
         if tasks.isEmpty {
-            tasks.append("Review the transcript and identify the main topic.")
-            tasks.append("Summarize the transcript in three sentences.")
+            tasks.append("Create an outline of the main topic covered in the transcript.")
+            tasks.append("Write a short summary capturing the three most important ideas.")
         }
 
         return tasks
@@ -77,11 +80,13 @@ struct ProgramGenerator {
         var questions: [String] = []
 
         if keywords.count >= 3 {
-            // Keyword-based focused questions
+            // Keyword-based conceptual questions
             let templates = [
-                "What is the primary function of **%@**?",
-                "How does **%@** relate to the main topic?",
-                "Define **%@** and give an example."
+                "What is the role of **%@** in this context?",
+                "Why is **%@** important for the overall topic?",
+                "How does **%@** interact with other key concepts?",
+                "What would happen if **%@** were removed or changed?",
+                "How would you verify that **%@** works correctly?"
             ]
             for (index, keyword) in keywords.enumerated() {
                 if questions.count >= 5 { break }
@@ -89,7 +94,7 @@ struct ProgramGenerator {
                 questions.append(String(format: template, keyword))
             }
         } else {
-            // Fallback: use top-scored sentences for fill-in-the-blank style
+            // Fallback: use top-scored sentences for conceptual prompts
             let scored = NLSummarizer.scoreSentences(sentences, keywords: keywords, language: language)
             let topSentences = scored
                 .sorted { $0.score > $1.score }
@@ -100,9 +105,9 @@ struct ProgramGenerator {
                 if words.count >= 6 {
                     let halfPoint = words.count / 2
                     let firstHalf = words.prefix(halfPoint).joined(separator: " ")
-                    questions.append("Complete this statement: \(firstHalf)...")
+                    questions.append("What concept completes this idea: \(firstHalf)…")
                 } else {
-                    questions.append("True or False: \(item.sentence)")
+                    questions.append("Why is the following statement significant: \(item.sentence)")
                 }
             }
 

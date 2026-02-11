@@ -5,6 +5,21 @@ import NaturalLanguage
 
 struct NLSummarizer {
 
+    // MARK: - Noise Mitigation Lists
+
+    /// Swedish / teacher filler tokens to ignore as keywords.
+    static let fillerTokens: Set<String> = [
+        "titta", "liksom", "typ", "alltså", "eh", "okej", "så",
+        "ju", "ba", "asså", "väl", "aja", "mm", "hmm", "öh"
+    ]
+
+    /// Known short (≤3 char) terms that ARE valid concepts (Swift / tech).
+    static let knownShortTerms: Set<String> = [
+        "api", "app", "css", "git", "ide", "ios", "json", "key",
+        "map", "nil", "pod", "ram", "sdk", "sql", "ssl", "tcp",
+        "tls", "url", "uuid", "var", "vue", "xml"
+    ]
+
     // MARK: - Sentence Tokenization
 
     /// Extract sentences from text using NLTokenizer (handles abbreviations like "Dr.", "approx." correctly).
@@ -61,8 +76,15 @@ struct NLSummarizer {
             return true
         }
 
+        // Noise mitigation: remove filler tokens and trivially short words
+        let filtered = frequency.filter { word, _ in
+            if fillerTokens.contains(word) { return false }
+            if word.count < 4 && !knownShortTerms.contains(word) { return false }
+            return true
+        }
+
         // Rank by frequency descending, return top N
-        return frequency
+        return filtered
             .sorted { $0.value > $1.value }
             .prefix(limit)
             .map { $0.key }
