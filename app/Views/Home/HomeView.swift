@@ -63,7 +63,15 @@ struct HomeView: View {
                     .frame(height: 60)
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        // Profile action placeholder
+                    } label: {
+                        Image(systemName: "person.crop.circle")
+                            .font(.subheadline)
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         showingSettings = true
                     } label: {

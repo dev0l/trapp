@@ -53,6 +53,13 @@ struct TranscriptListView: View {
         }
         .navigationTitle("Traps")
         .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    // Profile action placeholder
+                } label: {
+                    Image(systemName: "person.crop.circle")
+                }
+            }
             ToolbarItem(placement: .primaryAction) {
                 Button {
                     showingAddSheet = true

@@ -52,6 +52,13 @@ struct TranscriptProgramView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    // Profile action placeholder
+                } label: {
+                    Image(systemName: "person.crop.circle")
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
                 ShareLink(item: generateShareText()) {
                     Image(systemName: "square.and.arrow.up")
                 }
