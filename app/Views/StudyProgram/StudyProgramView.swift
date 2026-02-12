@@ -89,7 +89,11 @@ struct TranscriptProgramView: View {
                     }
                     .swipeActions(edge: .trailing) {
                         Button(role: .destructive) {
-                            withAnimation { items.wrappedValue.remove(at: index) }
+                            withAnimation {
+                                var updated = items.wrappedValue
+                                updated.remove(at: index)
+                                items.wrappedValue = updated
+                            }
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
