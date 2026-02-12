@@ -38,7 +38,7 @@ struct HomeView: View {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("Your Traps")
                                 .font(.headline)
-                                .foregroundStyle(.primary)
+                                .foregroundStyle(Theme.accent)
 
                             Text(trapCountLabel)
                                 .font(.caption)
