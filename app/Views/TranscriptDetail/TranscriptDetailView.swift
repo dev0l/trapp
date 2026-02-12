@@ -19,7 +19,7 @@ struct TranscriptDetailView: View {
         Group {
             if let transcript = transcript {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 16) {
+                    VStack(alignment: .leading, spacing: 20) {
                         if let date = transcript.date {
                             Label(date.formatted(date: .long, time: .omitted), systemImage: "calendar")
                                 .font(.subheadline)
@@ -30,14 +30,14 @@ struct TranscriptDetailView: View {
 
                         // Program section — placed above transcript for quick access
                         if let program = transcript.program {
-                            NavigationLink(destination: StudyProgramView(program: program, transcriptTitle: transcript.title)) {
-                                Label("View Study Program", systemImage: "list.clipboard.fill")
+                            NavigationLink(destination: TranscriptProgramView(program: program, transcriptTitle: transcript.title)) {
+                                Label("View Program", systemImage: "list.clipboard")
                                     .font(.headline)
                                     .padding()
                                     .frame(maxWidth: .infinity)
-                                    .background(.blue.opacity(0.1))
-                                    .foregroundStyle(.blue)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .background(.indigo.opacity(0.1))
+                                    .foregroundStyle(.indigo)
+                                    .clipShape(RoundedRectangle(cornerRadius: 14))
                             }
 
                             Button {
@@ -54,12 +54,13 @@ struct TranscriptDetailView: View {
                             Button {
                                 appState.generateProgram(for: transcriptId)
                             } label: {
-                                Label("Generate Study Program", systemImage: "sparkles")
+                                Label("Generate Program", systemImage: "sparkles")
                                     .font(.headline)
                                     .padding()
                                     .frame(maxWidth: .infinity)
                             }
                             .buttonStyle(.borderedProminent)
+                            .tint(.indigo)
                         }
 
                         Divider()
@@ -73,7 +74,7 @@ struct TranscriptDetailView: View {
                             .font(.caption)
                             .foregroundStyle(.tertiary)
                     }
-                    .padding()
+                    .padding(20)
                 }
                 .navigationTitle(transcript.title)
                 .navigationBarTitleDisplayMode(.large)
@@ -88,7 +89,7 @@ struct TranscriptDetailView: View {
                     AddTranscriptView(existingTranscript: transcript)
                         .environmentObject(appState)
                 }
-                .alert("Regenerate Study Program?", isPresented: $showingRegenerateAlert) {
+                .alert("Regenerate Program?", isPresented: $showingRegenerateAlert) {
                     Button("Cancel", role: .cancel) { }
                     Button("Regenerate", role: .destructive) {
                         appState.generateProgram(for: transcriptId)
@@ -98,24 +99,24 @@ struct TranscriptDetailView: View {
                         }
                     }
                 } message: {
-                    Text("This will replace the current study program with a freshly generated one.")
+                    Text("This will replace the current program with a freshly generated one.")
                 }
                 .overlay(alignment: .top) {
                     if showRegenerateBanner {
-                        Label("Study program regenerated", systemImage: "checkmark.circle.fill")
+                        Label("Program regenerated", systemImage: "checkmark.circle.fill")
                             .font(.subheadline.bold())
                             .padding()
                             .frame(maxWidth: .infinity)
                             .background(.green.opacity(0.9))
                             .foregroundStyle(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .clipShape(RoundedRectangle(cornerRadius: 14))
                             .padding(.horizontal)
                             .transition(.move(edge: .top).combined(with: .opacity))
                     }
                 }
                 .animation(.easeInOut, value: showRegenerateBanner)
             } else {
-                Text("Transcript not found")
+                Text("Trap not found")
                     .foregroundStyle(.secondary)
             }
         }

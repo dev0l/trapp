@@ -8,7 +8,7 @@ struct TrappApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TranscriptListView()
+            HomeView()
                 .environmentObject(appState)
         }
     }

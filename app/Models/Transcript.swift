@@ -8,5 +8,5 @@ struct Transcript: Codable, Identifiable {
     var date: Date?
     var rawText: String
     let createdAt: Date
-    var program: StudyProgram?
+    var program: TranscriptProgram?
 }

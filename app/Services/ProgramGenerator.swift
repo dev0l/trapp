@@ -6,7 +6,7 @@ import NaturalLanguage
 struct ProgramGenerator {
 
     /// Generate a study program from raw transcript text using NLP-based heuristics.
-    static func generate(from text: String) -> StudyProgram {
+    static func generate(from text: String) -> TranscriptProgram {
         let sentences = NLSummarizer.extractSentences(from: text)
         let keywords = NLSummarizer.extractKeywords(from: text, limit: 5)
         let language = NLSummarizer.detectLanguage(of: text)
@@ -15,7 +15,7 @@ struct ProgramGenerator {
         let studyTasks = generateStudyTasks(from: keywords)
         let quizQuestions = generateQuizQuestions(from: keywords, sentences: sentences, language: language)
 
-        return StudyProgram(
+        return TranscriptProgram(
             keyPoints: keyPoints,
             studyTasks: studyTasks,
             quizQuestions: quizQuestions,

@@ -1,37 +1,42 @@
-// Study program display view
+// Transcript program display view
 
 import SwiftUI
 
-struct StudyProgramView: View {
-    let program: StudyProgram
+struct TranscriptProgramView: View {
+    let program: TranscriptProgram
     let transcriptTitle: String
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading, spacing: 28) {
 
                 // Key Points
                 programSection(
                     title: "Key Points",
-                    icon: "lightbulb.fill",
+                    icon: "lightbulb",
+                    tint: .indigo,
                     items: program.keyPoints
                 )
 
                 Divider()
+                    .padding(.vertical, 4)
 
                 // Study Tasks
                 programSection(
                     title: "Study Tasks",
                     icon: "checklist",
+                    tint: .orange,
                     items: program.studyTasks
                 )
 
                 Divider()
+                    .padding(.vertical, 4)
 
                 // Quiz Questions
                 programSection(
                     title: "Quiz Questions",
-                    icon: "questionmark.circle.fill",
+                    icon: "questionmark.circle",
+                    tint: .teal,
                     items: program.quizQuestions
                 )
 
@@ -41,17 +46,18 @@ struct StudyProgramView: View {
                     .font(.caption)
                     .foregroundStyle(.tertiary)
             }
-            .padding()
+            .padding(20)
         }
-        .navigationTitle("Study Program")
+        .navigationTitle("Program")
         .navigationBarTitleDisplayMode(.inline)
     }
 
     @ViewBuilder
-    private func programSection(title: String, icon: String, items: [String]) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
+    private func programSection(title: String, icon: String, tint: Color, items: [String]) -> some View {
+        VStack(alignment: .leading, spacing: 14) {
             Label(title, systemImage: icon)
                 .font(.title3.bold())
+                .foregroundStyle(tint)
 
             if items.isEmpty {
                 Text("No items generated — try a longer transcript.")
@@ -60,7 +66,7 @@ struct StudyProgramView: View {
                     .italic()
             } else {
                 ForEach(Array(items.enumerated()), id: \.offset) { index, item in
-                    HStack(alignment: .top, spacing: 8) {
+                    HStack(alignment: .top, spacing: 10) {
                         Text("\(index + 1).")
                             .font(.subheadline.monospacedDigit())
                             .foregroundStyle(.secondary)

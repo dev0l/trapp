@@ -29,7 +29,7 @@ struct AddTranscriptView: View {
         NavigationStack {
             Form {
                 Section {
-                    TextField("Lecture title", text: $title)
+                    TextField("Program title", text: $title)
                         .onChange(of: title) { _, newValue in
                             if newValue.count > titleLimit {
                                 title = String(newValue.prefix(titleLimit))
@@ -56,6 +56,7 @@ struct AddTranscriptView: View {
                     } label: {
                         Label("Import from File", systemImage: "doc.badge.plus")
                     }
+                    .tint(.indigo)
 
                     TextEditor(text: $rawText)
                         .frame(minHeight: 150)
@@ -63,7 +64,7 @@ struct AddTranscriptView: View {
                     Text("Transcript Body")
                 }
             }
-            .navigationTitle(isEditing ? "Edit Transcript" : "Add Transcript")
+            .navigationTitle(isEditing ? "Edit Trap" : "New Trap")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

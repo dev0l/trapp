@@ -1,4 +1,4 @@
-// Main transcript list view
+// Main trap list view
 
 import SwiftUI
 
@@ -10,24 +10,25 @@ struct TranscriptListView: View {
         NavigationStack {
             Group {
                 if appState.transcripts.isEmpty {
-                    VStack(spacing: 16) {
-                        Image(systemName: "doc.text")
+                    VStack(spacing: 20) {
+                        Image(systemName: "tray")
                             .font(.system(size: 48))
-                            .foregroundStyle(.secondary)
-                        Text("No transcripts yet")
+                            .foregroundStyle(.indigo.opacity(0.5))
+                        Text("No traps yet")
                             .font(.title3)
                             .foregroundStyle(.secondary)
-                        Button("Add Your First Transcript") {
+                        Button("Add Your First Trap") {
                             showingAddSheet = true
                         }
                         .buttonStyle(.borderedProminent)
+                        .tint(.indigo)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     List {
                         ForEach(appState.transcripts) { transcript in
                             NavigationLink(destination: TranscriptDetailView(transcriptId: transcript.id)) {
-                                VStack(alignment: .leading, spacing: 4) {
+                                VStack(alignment: .leading, spacing: 6) {
                                     Text(transcript.title)
                                         .font(.headline)
                                     if let date = transcript.date {
@@ -42,7 +43,7 @@ struct TranscriptListView: View {
                                     if transcript.program != nil {
                                         Label("Program generated", systemImage: "checkmark.seal.fill")
                                             .font(.caption2)
-                                            .foregroundStyle(.green)
+                                            .foregroundStyle(.indigo)
                                     }
                                 }
                                 .padding(.vertical, 4)
@@ -52,7 +53,7 @@ struct TranscriptListView: View {
                     }
                 }
             }
-            .navigationTitle("Transcripts")
+            .navigationTitle("Traps")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
@@ -60,6 +61,7 @@ struct TranscriptListView: View {
                     } label: {
                         Image(systemName: "plus")
                     }
+                    .tint(.indigo)
                 }
             }
             .sheet(isPresented: $showingAddSheet) {

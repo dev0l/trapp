@@ -1,8 +1,8 @@
-// Study program data model
+// Transcript program data model
 
 import Foundation
 
-struct StudyProgram: Codable {
+struct TranscriptProgram: Codable {
     let keyPoints: [String]
     let studyTasks: [String]
     let quizQuestions: [String]
