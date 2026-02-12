@@ -44,6 +44,13 @@ struct AddTranscriptView: View {
                 }
 
                 Section {
+                    Toggle("Include date", isOn: $includeDate)
+                    if includeDate {
+                        DatePicker("Date", selection: $date, displayedComponents: .date)
+                    }
+                }
+
+                Section {
                     Button {
                         showingFileImporter = true
                     } label: {
@@ -54,13 +61,6 @@ struct AddTranscriptView: View {
                         .frame(minHeight: 150)
                 } header: {
                     Text("Transcript Body")
-                }
-
-                Section {
-                    Toggle("Include date", isOn: $includeDate)
-                    if includeDate {
-                        DatePicker("Date", selection: $date, displayedComponents: .date)
-                    }
                 }
             }
             .navigationTitle(isEditing ? "Edit Transcript" : "Add Transcript")
