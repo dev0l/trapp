@@ -3,9 +3,9 @@
 import Foundation
 
 struct TranscriptProgram: Codable {
-    let keyPoints: [String]
-    let studyTasks: [String]
-    let quizQuestions: [String]
+    var keyPoints: [String]
+    var studyTasks: [String]
+    var quizQuestions: [String]
     let generatedAt: Date
     var keywords: [String]? = []
 }

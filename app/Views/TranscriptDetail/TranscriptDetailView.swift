@@ -19,7 +19,7 @@ struct TranscriptDetailView: View {
         Group {
             if let transcript = transcript {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
+                    VStack(alignment: .leading, spacing: Theme.sectionSpacing) {
                         if let date = transcript.date {
                             Label(date.formatted(date: .long, time: .omitted), systemImage: "calendar")
                                 .font(.subheadline)
@@ -30,14 +30,14 @@ struct TranscriptDetailView: View {
 
                         // Program section — placed above transcript for quick access
                         if let program = transcript.program {
-                            NavigationLink(destination: TranscriptProgramView(program: program, transcriptTitle: transcript.title)) {
+                            NavigationLink(destination: TranscriptProgramView(transcriptId: transcriptId, program: program)) {
                                 Label("View Program", systemImage: "list.clipboard")
                                     .font(.headline)
                                     .padding()
                                     .frame(maxWidth: .infinity)
-                                    .background(.indigo.opacity(0.1))
-                                    .foregroundStyle(.indigo)
-                                    .clipShape(RoundedRectangle(cornerRadius: 14))
+                                    .background(Theme.accent.opacity(Theme.buttonFillOpacity))
+                                    .foregroundStyle(Theme.accent)
+                                    .clipShape(RoundedRectangle(cornerRadius: Theme.cornerRadius))
                             }
 
                             Button {
@@ -49,7 +49,7 @@ struct TranscriptDetailView: View {
                                     .frame(maxWidth: .infinity)
                             }
                             .buttonStyle(.bordered)
-                            .tint(.orange)
+                            .tint(Theme.secondary)
                         } else {
                             Button {
                                 appState.generateProgram(for: transcriptId)
@@ -60,7 +60,6 @@ struct TranscriptDetailView: View {
                                     .frame(maxWidth: .infinity)
                             }
                             .buttonStyle(.borderedProminent)
-                            .tint(.indigo)
                         }
 
                         Divider()
@@ -74,7 +73,7 @@ struct TranscriptDetailView: View {
                             .font(.caption)
                             .foregroundStyle(.tertiary)
                     }
-                    .padding(20)
+                    .padding(Theme.contentPadding)
                 }
                 .navigationTitle(transcript.title)
                 .navigationBarTitleDisplayMode(.large)
@@ -107,9 +106,9 @@ struct TranscriptDetailView: View {
                             .font(.subheadline.bold())
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(.green.opacity(0.9))
+                            .background(Theme.success.opacity(Theme.bannerOpacity))
                             .foregroundStyle(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 14))
+                            .clipShape(RoundedRectangle(cornerRadius: Theme.cornerRadius))
                             .padding(.horizontal)
                             .transition(.move(edge: .top).combined(with: .opacity))
                     }

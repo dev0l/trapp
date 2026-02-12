@@ -56,7 +56,6 @@ struct AddTranscriptView: View {
                     } label: {
                         Label("Import from File", systemImage: "doc.badge.plus")
                     }
-                    .tint(.indigo)
 
                     TextEditor(text: $rawText)
                         .frame(minHeight: 150)

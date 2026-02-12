@@ -48,4 +48,10 @@ class AppState: ObservableObject {
         transcripts[index].program = program
         persistence.save(transcripts)
     }
+
+    func updateProgram(for transcriptId: UUID, program: TranscriptProgram) {
+        guard let index = transcripts.firstIndex(where: { $0.id == transcriptId }) else { return }
+        transcripts[index].program = program
+        persistence.save(transcripts)
+    }
 }
