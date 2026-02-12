@@ -99,8 +99,9 @@ struct TranscriptProgramView: View {
             }
         } header: {
             Label(title, systemImage: icon)
-                .font(.subheadline.bold())
+                .font(.headline)
                 .foregroundStyle(tint)
+                .textCase(nil)
         }
     }
 }
