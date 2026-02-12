@@ -72,5 +72,6 @@ struct TranscriptListView: View {
             let transcript = appState.transcripts[index]
             appState.deleteTranscript(id: transcript.id)
         }
+        HapticManager.shared.play(.medium)
     }
 }

@@ -5,6 +5,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var appState: AppState
     @AppStorage("themeMode") private var themeMode: String = ThemeMode.trapp.rawValue
+    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool = false
     @State private var showingSettings = false
 
     var body: some View {
@@ -73,6 +74,12 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showingSettings) {
                 settingsSheet
+            }
+            .sheet(isPresented: Binding(
+                get: { !hasSeenOnboarding },
+                set: { hasSeenOnboarding = !$0 }
+            )) {
+                OnboardingView()
             }
         }
     }

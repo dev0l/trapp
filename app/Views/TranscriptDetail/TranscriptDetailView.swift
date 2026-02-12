@@ -91,7 +91,9 @@ struct TranscriptDetailView: View {
                 .alert("Regenerate Program?", isPresented: $showingRegenerateAlert) {
                     Button("Cancel", role: .cancel) { }
                     Button("Regenerate", role: .destructive) {
+                        HapticManager.shared.play(.medium)
                         appState.generateProgram(for: transcriptId)
+                        HapticManager.shared.notify(.success)
                         showRegenerateBanner = true
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                             withAnimation { showRegenerateBanner = false }
