@@ -59,7 +59,9 @@ struct TranscriptListView: View {
                         // Profile action placeholder
                     } label: {
                         Image(systemName: "person.crop.circle")
+                            .foregroundStyle(Theme.accent)
                     }
+                    .buttonStyle(.plain)
 
                     Divider()
                         .frame(height: 16)
@@ -68,7 +70,9 @@ struct TranscriptListView: View {
                         showingAddSheet = true
                     } label: {
                         Image(systemName: "plus")
+                            .foregroundStyle(Theme.accent)
                     }
+                    .buttonStyle(.plain)
                 }
             }
         }

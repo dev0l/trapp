@@ -70,7 +70,9 @@ struct HomeView: View {
                         } label: {
                             Image(systemName: "person.crop.circle")
                                 .font(.subheadline)
+                                .foregroundStyle(Theme.accent)
                         }
+                        .buttonStyle(.plain)
 
                         Divider()
                             .frame(height: 16)
@@ -80,7 +82,9 @@ struct HomeView: View {
                         } label: {
                             Image(systemName: "gearshape")
                                 .font(.subheadline)
+                                .foregroundStyle(Theme.accent)
                         }
+                        .buttonStyle(.plain)
                     }
                 }
             }

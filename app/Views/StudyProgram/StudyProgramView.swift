@@ -57,14 +57,18 @@ struct TranscriptProgramView: View {
                         // Profile action placeholder
                     } label: {
                         Image(systemName: "person.crop.circle")
+                            .foregroundStyle(Theme.accent)
                     }
+                    .buttonStyle(.plain)
 
                     Divider()
                         .frame(height: 16)
 
                     ShareLink(item: generateShareText()) {
                         Image(systemName: "square.and.arrow.up")
+                            .foregroundStyle(Theme.accent)
                     }
+                    .buttonStyle(.plain)
 
                     Divider()
                         .frame(height: 16)
