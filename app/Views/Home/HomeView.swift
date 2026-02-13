@@ -64,12 +64,9 @@ struct HomeView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        // Profile action placeholder
-                    } label: {
-                        Image(systemName: "person.crop.circle")
-                            .font(.subheadline)
-                    }
+                    Image(systemName: "person.crop.circle")
+                        .font(.subheadline)
+                        .foregroundStyle(Theme.accent)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {

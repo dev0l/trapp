@@ -52,11 +52,8 @@ struct TranscriptProgramView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    // Profile action placeholder
-                } label: {
-                    Image(systemName: "person.crop.circle")
-                }
+                Image(systemName: "person.crop.circle")
+                    .foregroundStyle(Theme.accent)
             }
             ToolbarItem(placement: .topBarTrailing) {
                 ShareLink(item: generateShareText()) {
