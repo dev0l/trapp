@@ -3,5 +3,5 @@
 import Foundation
 
 struct AuthenticationService {
-    // Firebase auth integration
+  // Firebase auth integration
 }

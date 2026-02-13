@@ -3,8 +3,8 @@
 import SwiftUI
 
 struct AuthenticationView: View {
-    var body: some View {
-        Text("Authentication — not yet implemented")
-            .foregroundStyle(.secondary)
-    }
+  var body: some View {
+    Text("Authentication — not yet implemented")
+      .foregroundStyle(.secondary)
+  }
 }
