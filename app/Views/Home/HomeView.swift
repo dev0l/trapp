@@ -64,19 +64,23 @@ struct HomeView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        // Profile action placeholder
-                    } label: {
-                        Image(systemName: "person.crop.circle")
-                            .font(.subheadline)
-                    }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showingSettings = true
-                    } label: {
-                        Image(systemName: "gearshape")
-                            .font(.subheadline)
+                    HStack(spacing: 12) {
+                        Button {
+                            // Profile action placeholder
+                        } label: {
+                            Image(systemName: "person.crop.circle")
+                                .font(.subheadline)
+                        }
+
+                        Divider()
+                            .frame(height: 16)
+
+                        Button {
+                            showingSettings = true
+                        } label: {
+                            Image(systemName: "gearshape")
+                                .font(.subheadline)
+                        }
                     }
                 }
             }

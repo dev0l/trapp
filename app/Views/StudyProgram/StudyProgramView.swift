@@ -52,19 +52,25 @@ struct TranscriptProgramView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    // Profile action placeholder
-                } label: {
-                    Image(systemName: "person.crop.circle")
+                HStack(spacing: 12) {
+                    Button {
+                        // Profile action placeholder
+                    } label: {
+                        Image(systemName: "person.crop.circle")
+                    }
+
+                    Divider()
+                        .frame(height: 16)
+
+                    ShareLink(item: generateShareText()) {
+                        Image(systemName: "square.and.arrow.up")
+                    }
+
+                    Divider()
+                        .frame(height: 16)
+
+                    EditButton()
                 }
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                ShareLink(item: generateShareText()) {
-                    Image(systemName: "square.and.arrow.up")
-                }
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                EditButton()
             }
         }
         .onDisappear {

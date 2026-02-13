@@ -54,17 +54,21 @@ struct TranscriptListView: View {
         .navigationTitle("Traps")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    // Profile action placeholder
-                } label: {
-                    Image(systemName: "person.crop.circle")
-                }
-            }
-            ToolbarItem(placement: .primaryAction) {
-                Button {
-                    showingAddSheet = true
-                } label: {
-                    Image(systemName: "plus")
+                HStack(spacing: 12) {
+                    Button {
+                        // Profile action placeholder
+                    } label: {
+                        Image(systemName: "person.crop.circle")
+                    }
+
+                    Divider()
+                        .frame(height: 16)
+
+                    Button {
+                        showingAddSheet = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
                 }
             }
         }
