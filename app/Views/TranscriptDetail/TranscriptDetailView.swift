@@ -78,10 +78,12 @@ struct TranscriptDetailView: View {
         .navigationTitle(transcript.title)
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
+          /*
           ToolbarItem(placement: .topBarTrailing) {
             Image(systemName: "person.crop.circle")
               .foregroundStyle(Theme.accent)
           }
+          */
           ToolbarItem(placement: .primaryAction) {
             Button("Edit") {
               showingEditSheet = true

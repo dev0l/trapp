@@ -51,10 +51,12 @@ struct TranscriptProgramView: View {
     .navigationTitle("Program")
     .navigationBarTitleDisplayMode(.inline)
     .toolbar {
+      /*
       ToolbarItem(placement: .topBarTrailing) {
         Image(systemName: "person.crop.circle")
           .foregroundStyle(Theme.accent)
       }
+      */
       ToolbarItem(placement: .topBarTrailing) {
         ShareLink(item: generateShareText()) {
           Image(systemName: "square.and.arrow.up")

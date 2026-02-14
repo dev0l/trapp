@@ -63,11 +63,13 @@ struct HomeView: View {
           .frame(height: 60)
       }
       .toolbar {
+        /*
         ToolbarItem(placement: .topBarTrailing) {
           Image(systemName: "person.crop.circle")
             .font(.subheadline)
             .foregroundStyle(Theme.accent)
         }
+        */
         ToolbarItem(placement: .topBarTrailing) {
           Button {
             showingSettings = true

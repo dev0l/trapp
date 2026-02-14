@@ -53,10 +53,12 @@ struct TranscriptListView: View {
     }
     .navigationTitle("Traps")
     .toolbar {
+      /*
       ToolbarItem(placement: .topBarTrailing) {
         Image(systemName: "person.crop.circle")
           .foregroundStyle(Theme.accent)
       }
+      */
       ToolbarItem(placement: .topBarTrailing) {
         Button {
           showingAddSheet = true
