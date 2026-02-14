@@ -15,9 +15,10 @@ struct HomeView: View {
 
         // Hero area
         VStack(spacing: 16) {
-          Image(systemName: "waveform.and.magnifyingglass")
-            .font(.system(size: 56, weight: .thin))
-            .foregroundStyle(Theme.accent)
+          Image("trapp-logo")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 120, height: 120)
 
           Text("Trapp")
             .font(.largeTitle.bold())

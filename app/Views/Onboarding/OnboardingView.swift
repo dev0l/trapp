@@ -11,9 +11,10 @@ struct OnboardingView: View {
       
       // Hero
       VStack(spacing: 16) {
-        Image(systemName: "waveform.and.magnifyingglass")
-          .font(.system(size: 72, weight: .thin))
-          .foregroundStyle(Theme.accent)
+        Image("trapp-logo")
+          .resizable()
+          .scaledToFit()
+          .frame(width: 160, height: 160)
         
         Text("Welcome to Trapp")
           .font(.largeTitle.bold())
