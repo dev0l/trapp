@@ -64,7 +64,8 @@ struct TranscriptProgramView: View {
       ToolbarItem(placement: .topBarTrailing) {
         ShareLink(
           item: generateShareText(),
-          subject: Text(transcriptTitle)
+          subject: Text(transcriptTitle),
+          preview: SharePreview(transcriptTitle)
         ) {
           Image(systemName: "square.and.arrow.up")
         }
@@ -142,6 +143,7 @@ struct TranscriptProgramView: View {
     } header: {
       Label(title, systemImage: icon)
         .font(.headline)
+        .imageScale(.large)
         .foregroundStyle(tint)
         .textCase(nil)
     }
