@@ -8,15 +8,31 @@
 
 /* Begin PBXFileReference section */
 		6A1711852F3BB51E005A4231 /* Trapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AE02D172F41FD6600F25B55 /* StudyProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyProgram.swift; sourceTree = "<group>"; };
+		6AE02D182F41FD6600F25B55 /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
+		6AE02D192F41FD6600F25B55 /* Transcript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transcript.swift; sourceTree = "<group>"; };
+		6AE02D1B2F41FD6600F25B55 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		6AE02D1D2F41FD6600F25B55 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		6AE02D1E2F41FD6600F25B55 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		6AE02D1F2F41FD6600F25B55 /* NLSummarizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLSummarizer.swift; sourceTree = "<group>"; };
+		6AE02D202F41FD6600F25B55 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
+		6AE02D212F41FD6600F25B55 /* ProgramGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramGenerator.swift; sourceTree = "<group>"; };
+		6AE02D232F41FD6600F25B55 /* AddTranscriptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTranscriptView.swift; sourceTree = "<group>"; };
+		6AE02D252F41FD6600F25B55 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		6AE02D272F41FD6600F25B55 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		6AE02D292F41FD6600F25B55 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		6AE02D2B2F41FD6600F25B55 /* StudyProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyProgramView.swift; sourceTree = "<group>"; };
+		6AE02D2D2F41FD6600F25B55 /* TranscriptDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptDetailView.swift; sourceTree = "<group>"; };
+		6AE02D2F2F41FD6600F25B55 /* TranscriptListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptListView.swift; sourceTree = "<group>"; };
+		6AE02D322F41FD6600F25B55 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		6AE02D332F41FD6600F25B55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6AE02D342F41FD6600F25B55 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		6AE02D352F41FD6600F25B55 /* TrappApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrappApp.swift; sourceTree = "<group>"; };
+		6AE02D372F41FD6600F25B55 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		6AE02D382F41FD6600F25B55 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		6AE02D392F41FD6600F25B55 /* trapp-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trapp-logo.png"; sourceTree = "<group>"; };
+		6AE02D3B2F41FD6600F25B55 /* Trapp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Trapp.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		6A1711872F3BB51E005A4231 /* Trapp */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Trapp;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		6A1711822F3BB51E005A4231 /* Frameworks */ = {
@@ -32,7 +48,10 @@
 		6A17117C2F3BB51E005A4231 = {
 			isa = PBXGroup;
 			children = (
-				6A1711872F3BB51E005A4231 /* Trapp */,
+				6AE02D362F41FD6600F25B55 /* app */,
+				6AE02D372F41FD6600F25B55 /* README.md */,
+				6AE02D3A2F41FD6600F25B55 /* resources */,
+				6AE02D3B2F41FD6600F25B55 /* Trapp.xcodeproj */,
 				6A1711862F3BB51E005A4231 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -42,6 +61,135 @@
 			children = (
 				6A1711852F3BB51E005A4231 /* Trapp.app */,
 			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6AE02D1A2F41FD6600F25B55 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6AE02D172F41FD6600F25B55 /* StudyProgram.swift */,
+				6AE02D182F41FD6600F25B55 /* Summary.swift */,
+				6AE02D192F41FD6600F25B55 /* Transcript.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6AE02D1C2F41FD6600F25B55 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6AE02D1B2F41FD6600F25B55 /* Localizable.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6AE02D222F41FD6600F25B55 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6AE02D1D2F41FD6600F25B55 /* AuthenticationService.swift */,
+				6AE02D1E2F41FD6600F25B55 /* HapticManager.swift */,
+				6AE02D1F2F41FD6600F25B55 /* NLSummarizer.swift */,
+				6AE02D202F41FD6600F25B55 /* PersistenceService.swift */,
+				6AE02D212F41FD6600F25B55 /* ProgramGenerator.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6AE02D242F41FD6600F25B55 /* AddTranscript */ = {
+			isa = PBXGroup;
+			children = (
+				6AE02D232F41FD6600F25B55 /* AddTranscriptView.swift */,
+			);
+			path = AddTranscript;
+			sourceTree = "<group>";
+		};
+		6AE02D262F41FD6600F25B55 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				6AE02D252F41FD6600F25B55 /* AuthenticationView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		6AE02D282F41FD6600F25B55 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				6AE02D272F41FD6600F25B55 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		6AE02D2A2F41FD6600F25B55 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				6AE02D292F41FD6600F25B55 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		6AE02D2C2F41FD6600F25B55 /* StudyProgram */ = {
+			isa = PBXGroup;
+			children = (
+				6AE02D2B2F41FD6600F25B55 /* StudyProgramView.swift */,
+			);
+			path = StudyProgram;
+			sourceTree = "<group>";
+		};
+		6AE02D2E2F41FD6600F25B55 /* TranscriptDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6AE02D2D2F41FD6600F25B55 /* TranscriptDetailView.swift */,
+			);
+			path = TranscriptDetail;
+			sourceTree = "<group>";
+		};
+		6AE02D302F41FD6600F25B55 /* TranscriptList */ = {
+			isa = PBXGroup;
+			children = (
+				6AE02D2F2F41FD6600F25B55 /* TranscriptListView.swift */,
+			);
+			path = TranscriptList;
+			sourceTree = "<group>";
+		};
+		6AE02D312F41FD6600F25B55 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6AE02D242F41FD6600F25B55 /* AddTranscript */,
+				6AE02D262F41FD6600F25B55 /* Authentication */,
+				6AE02D282F41FD6600F25B55 /* Home */,
+				6AE02D2A2F41FD6600F25B55 /* Onboarding */,
+				6AE02D2C2F41FD6600F25B55 /* StudyProgram */,
+				6AE02D2E2F41FD6600F25B55 /* TranscriptDetail */,
+				6AE02D302F41FD6600F25B55 /* TranscriptList */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6AE02D362F41FD6600F25B55 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				6AE02D1A2F41FD6600F25B55 /* Models */,
+				6AE02D1C2F41FD6600F25B55 /* Resources */,
+				6AE02D222F41FD6600F25B55 /* Services */,
+				6AE02D312F41FD6600F25B55 /* Views */,
+				6AE02D322F41FD6600F25B55 /* AppState.swift */,
+				6AE02D332F41FD6600F25B55 /* Assets.xcassets */,
+				6AE02D342F41FD6600F25B55 /* Theme.swift */,
+				6AE02D352F41FD6600F25B55 /* TrappApp.swift */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		6AE02D3A2F41FD6600F25B55 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				6AE02D382F41FD6600F25B55 /* .gitkeep */,
+				6AE02D392F41FD6600F25B55 /* trapp-logo.png */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		6AE02D3C2F41FD6600F25B55 /* Products */ = {
+			isa = PBXGroup;
 			name = Products;
 			sourceTree = "<group>";
 		};
@@ -59,9 +207,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				6A1711872F3BB51E005A4231 /* Trapp */,
 			);
 			name = Trapp;
 			packageProductDependencies = (
@@ -97,6 +242,12 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6A1711862F3BB51E005A4231 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 6AE02D3C2F41FD6600F25B55 /* Products */;
+					ProjectRef = 6AE02D3B2F41FD6600F25B55 /* Trapp.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				6A1711842F3BB51E005A4231 /* Trapp */,
