@@ -1,38 +1,71 @@
-# Trapp — Turn Chaos into Structure
+### Trapp — Transcripts Become Programs
 
-**Transcripts become programs.**
+**Trapp transforms transcripts, notes, and raw text into clear, structured study programs — instantly and entirely on your device.**
 
-Trapp automatically transforms your lecture transcripts, notes, and raw text into clear, actionable study plans. We leverage on-device processing to generate key points, specific study tasks, and conceptual quiz questions, giving you a structured path to mastery without compromising your privacy.
+Instead of re-reading walls of text, Trapp helps you move from information to action. Paste a transcript or any block of text, and Trapp generates a focused study program with key points, tasks, and reflective questions.
 
-## Key Features
+No accounts.
+No cloud processing.
+No tracking.
 
-### 📄 Transform Notes
-Import text files or paste transcripts directly to instantly generate structured study material. No more scrolling through endless walls of text.
-
-### ✅ Actionable Programs
-Break down dense information into manageable components:
--   **Key Points**: Understand core concepts quickly.
--   **Study Tasks**: Follow a step-by-step learning path.
--   **Quiz Questions**: Test your understanding with auto-generated conceptual questions.
-
-### 🔒 Privacy First
-Everything stays on your device. All processing happens locally—no cloud uploads, no data tracking. Your study materials are yours alone.
-
-### 📚 Study Mode
-Track your progress through tasks and measure your retention as you complete your program.
+Just structure.
 
 ---
 
-## Development & Build Instructions
+### What Trapp Does
 
-For developers contributing to the project or building from source:
+Trapp turns unstructured text into a study program consisting of:
 
-1.  **Open Xcode**: File > New > Project > iOS App (SwiftUI, Swift).
-2.  **Setup**: Name the project **Trapp**.
-3.  **Import Sources**: Replace the generated files with the contents of the `Trapp/app/` directory:
-    -   Delete the auto-generated `ContentView.swift` and `TrappApp.swift`.
-    -   Add all files from `app/` into the Xcode project (drag & drop, check "Copy items if needed").
-4.  **Configuration**: Ensure `import Combine` is available (standard in iOS SDK).
-5.  **Build & Run**: Use `⌘R` on the iOS Simulator (iOS 16+).
+* **Key Points** – distilled concepts and ideas
+* **Study Tasks** – concrete actions to deepen understanding
+* **Reflective Questions** – prompts to explore meaning and connections
 
-> **Note**: This is a minimal functional app with full CRUD capabilities and local study program generation logic. Authentication is currently implemented as a stub for future extensions.
+You stay in control at every step. Programs can be regenerated, edited, reordered, or shared when needed.
+
+---
+
+### Why Trapp
+
+Transcripts are everywhere — lectures, videos, meetings, talks — but they are rarely usable as-is.
+
+Trapp is designed for moments when you want to *work with* information, not just store it.
+
+It supports:
+
+* studying
+* learning from videos or talks
+* reflecting on written material
+* turning passive content into active engagement
+
+“Study” here does not mean formal education only — it means **intentional understanding**.
+
+---
+
+### Privacy & Processing
+
+All processing happens **locally on your device**.
+
+* No uploads
+* No servers
+* No user accounts
+* No analytics or tracking
+
+Your text stays yours.
+
+---
+
+### Platform
+
+Trapp is built as a native iOS app with a focus on clarity, calm interaction, and offline reliability.
+
+---
+
+### Philosophy
+
+Trapp is intentionally simple.
+
+It does not try to think for you.
+It helps you **structure your own thinking**.
+
+Transcripts become programs —
+and programs become movement.
