@@ -1,41 +1,38 @@
-# trapp — Transcript & Program
+# Trapp — Turn Chaos into Structure
 
-iOS application for transforming lecture transcripts into structured study programs.
+**Transcripts become programs.**
 
-## How to Run
+Trapp automatically transforms your lecture transcripts, notes, and raw text into clear, actionable study plans. We leverage on-device processing to generate key points, specific study tasks, and conceptual quiz questions, giving you a structured path to mastery without compromising your privacy.
 
-1. Open Xcode → **File > New > Project** → iOS App (SwiftUI, Swift)
-2. Name the project **Trapp**, create it anywhere temporary
-3. Replace the generated Swift files with the contents of the `app/` directory:
-   - Delete the auto-generated `ContentView.swift` and `TrappApp.swift`
-   - Add all files from `app/` into the Xcode project (drag & drop, check "Copy items if needed")
-   - **Note:** also add `import Combine` is already included in `AppState.swift`
-4. **Build & Run** (`⌘R`) on iOS Simulator (iOS 16+)
+## Key Features
 
-> **Tip:** If your Xcode project already includes the sources, just **⌘B** to rebuild after pulling changes.
+### 📄 Transform Notes
+Import text files or paste transcripts directly to instantly generate structured study material. No more scrolling through endless walls of text.
 
-## What Works
+### ✅ Actionable Programs
+Break down dense information into manageable components:
+-   **Key Points**: Understand core concepts quickly.
+-   **Study Tasks**: Follow a step-by-step learning path.
+-   **Quiz Questions**: Test your understanding with auto-generated conceptual questions.
 
-- **Transcript list** — shows all saved transcripts, or an empty-state prompt
-- **Add transcript** — form with title (60 char limit with counter), body text, and optional date
-- **Edit transcript** — tap a transcript → Edit button → modify and save
-- **Delete transcript** — swipe left on any list item to delete
-- **Local persistence** — transcripts saved as JSON in Documents directory; survives app restart
-- **Detail view** — tap a transcript to see its full content
-- **Program generation** — deterministic heuristic: extracts key points, study tasks, and quiz questions
-- **Study program view** — view generated program with numbered sections
-- **Navigation** — full NavigationStack flow: list → add (sheet) / detail (push) → edit (sheet) / program (push)
+### 🔒 Privacy First
+Everything stays on your device. All processing happens locally—no cloud uploads, no data tracking. Your study materials are yours alone.
 
-## Foundation Structure
+### 📚 Study Mode
+Track your progress through tasks and measure your retention as you complete your program.
 
-- **TrappApp.swift** — SwiftUI app entry point
-- **AppState.swift** — Root state management (ObservableObject)
-- **Models/** — Data models (Transcript, StudyProgram, Summary)
-- **Views/** — SwiftUI views organized by user flow
-- **Services/** — Business logic (ProgramGenerator, Persistence, Authentication stub)
-- **Resources/** — Localization and assets
+---
 
-## Status
+## Development & Build Instructions
 
-Minimal functional app with full CRUD and study program generation.  
-Authentication remains as a stub for future implementation.
+For developers contributing to the project or building from source:
+
+1.  **Open Xcode**: File > New > Project > iOS App (SwiftUI, Swift).
+2.  **Setup**: Name the project **Trapp**.
+3.  **Import Sources**: Replace the generated files with the contents of the `Trapp/app/` directory:
+    -   Delete the auto-generated `ContentView.swift` and `TrappApp.swift`.
+    -   Add all files from `app/` into the Xcode project (drag & drop, check "Copy items if needed").
+4.  **Configuration**: Ensure `import Combine` is available (standard in iOS SDK).
+5.  **Build & Run**: Use `⌘R` on the iOS Simulator (iOS 16+).
+
+> **Note**: This is a minimal functional app with full CRUD capabilities and local study program generation logic. Authentication is currently implemented as a stub for future extensions.
